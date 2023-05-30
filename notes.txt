@@ -1,3 +1,9 @@
+
+https://drive.google.com/file/d/1wgV0d51EwOsIeC9VC_86z4aC2g1XupJP/view?usp=drivesdk
+
+
+
+
 In complex React applications, managing state can become challenging, especially when multiple components need access to the same state or when state changes require complex logic. React Context, combined with a reducer pattern, provides an elegant solution to address these challenges. In this blog post, we'll explore how to use React Context and a reducer to manage application state effectively.
 
 The Context API in React allows you to share state data across multiple components without passing props explicitly at each level of the component tree. It consists of two main components: createContext and Context.Provider. Here's an example:
