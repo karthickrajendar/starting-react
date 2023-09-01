@@ -1,6 +1,50 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+// Sample employee data
+const employees = [
+    { name: "Employee 1", gender: "Male", age: 30, joinDate: "2020-01-15", role: "Engineer", location: "New York" },
+    { name: "Employee 2", gender: "Female", age: 35, joinDate: "2018-05-10", role: "Manager", location: "San Francisco" },
+    // Add more employee data here
+];
+
+// Function to shuffle an array randomly
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Function to create diverse teams and select captains
+function createDiverseTeamsWithCaptains(employees, teamSize) {
+    // Shuffle the employee array randomly
+    shuffleArray(employees);
+
+    // Split employees into teams
+    const teams = [];
+    for (let i = 0; i < employees.length; i += teamSize) {
+        const team = employees.slice(i, i + teamSize);
+        
+        // Select the captain based on your diversity criteria (e.g., the first team member)
+        const captain = team[0];
+        team.splice(0, 1); // Remove the captain from the team
+        
+        // Add the captain back to the team
+        team.unshift(captain);
+        
+        teams.push(team);
+    }
+
+    return teams;
+}
+
+// Usage example
+const diverseTeamsWithCaptains = createDiverseTeamsWithCaptains(employees, 4); // Change the team size as needed
+console.log(diverseTeamsWithCaptains);
+
+
 Creating teams that have a mix of all specified criteria while ensuring diversity in terms of gender, age, join date, role, and location requires a more complex approach. Here's an example of how you can achieve this:
 
 ```javascript
