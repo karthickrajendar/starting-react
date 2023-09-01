@@ -2,6 +2,28 @@
 User-agent: *
 Disallow:
 
+function findDivisors(number) {
+  let divisors = [];
+
+  // Loop from 1 to half of the number
+  for (let i = 1; i <= number / 2; i++) {
+    // Check if 'number' is divisible by 'i' without a remainder
+    if (number % i === 0) {
+      divisors.push(i);
+    }
+  }
+
+  // Add the number itself as a divisor
+  divisors.push(number);
+
+  return divisors;
+}
+
+const inputNumber = 12; // Change this to the number you want to find divisors for
+const divisors = findDivisors(inputNumber);
+
+console.log(`Divisors of ${inputNumber}: ${divisors.join(', ')}`);
+
 // Sample employee data in JSON format
 const employees = [
   { name: "Employee 1", location: "Location A", gender: "Male", role: "Developer" },
