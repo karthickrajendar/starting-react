@@ -1,6 +1,75 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+// Function to create teams based on criteria
+function createTeamsWithAllCriteria(employeeData, numTeams, criteria) {
+  // Group employees by criteria (e.g., location, gender, role)
+  const groupedEmployees = {};
+  for (const employee of employeeData) {
+    const key = criteria.map((criterion) => employee[criterion]).join("-");
+    if (!groupedEmployees[key]) {
+      groupedEmployees[key] = [];
+    }
+    groupedEmployees[key].push(employee);
+  }
+
+  // Calculate the target team size
+  const totalEmployeeCount = Object.values(groupedEmployees).reduce(
+    (count, employeesWithCriteria) => count + employeesWithCriteria.length,
+    0
+  );
+  const targetTeamSize = Math.floor(totalEmployeeCount / numTeams);
+
+  if (totalEmployeeCount < numTeams) {
+    return "Not enough employees to create the specified number of teams.";
+  }
+
+  // Randomly assign employees to teams while ensuring all criteria are met
+  const teams = [];
+  const criteriaKeys = {};
+  for (const criterion of criteria) {
+    criteriaKeys[criterion] = [...new Set(employeeData.map((employee) => employee[criterion]))];
+    shuffleArray(criteriaKeys[criterion]);
+  }
+
+  for (let i = 0; i < numTeams; i++) {
+    const team = [];
+
+    // Select employees for each criteria value
+    for (const criterion of criteria) {
+      for (const value of criteriaKeys[criterion]) {
+        const key = [criterion, value].join("-");
+        if (groupedEmployees[key] && groupedEmployees[key].length > 0) {
+          const selectedEmployee = groupedEmployees[key].shift();
+          team.push(selectedEmployee);
+
+          // If the team size exceeds the target size, move to the next team
+          if (team.length >= targetTeamSize) {
+            break;
+          }
+        }
+      }
+    }
+
+    teams.push(team);
+  }
+
+  return teams;
+}
+
+// Example usage
+const numTeams = 3; // Specify the number of teams
+const criteria = ["location", "gender", "role"]; // Specify the criteria for team composition
+
+const result = createTeamsWithAllCriteria(employees, numTeams, criteria);
+for (let i = 0; i < result.length; i++) {
+  console.log(`Team ${i + 1}:`);
+  for (const employee of result[i]) {
+    console.log(employee.name);
+  }
+  console.log();
+}
 // Function to create teams based on criteria
 function createTeamsWithAllLocationsAndGenders(employeeData, numTeams, criteria) {
   // Group employees by criteria (e.g., location, gender, role)
