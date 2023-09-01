@@ -1,6 +1,73 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+// Sample employee data in JSON format
+const employees = [
+  { name: "Employee 1", location: "Location A", gender: "Male", role: "Developer" },
+  { name: "Employee 2", location: "Location B", gender: "Female", role: "Designer" },
+  // Add more employee data here
+];
+
+// Define team criteria with arrays
+const criteria = {
+  location: ["Location A", "Location B"],
+  gender: ["Male"],
+  role: ["Developer", "Designer"],
+};
+
+// Function to filter employees based on criteria
+function filterEmployees(employees, criteria) {
+  return employees.filter(employee => {
+    return (
+      criteria.location.includes(employee.location) &&
+      criteria.gender.includes(employee.gender) &&
+      criteria.role.includes(employee.role)
+    );
+  });
+}
+
+// Shuffle function (Fisher-Yates shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Function to generate teams
+function generateTeams(employees, criteria, teamSize) {
+  const filteredEmployees = filterEmployees(employees, criteria);
+
+  // Shuffle the filtered employees
+  shuffleArray(filteredEmployees);
+
+  // Calculate the number of teams needed
+  const numTeams = Math.ceil(filteredEmployees.length / teamSize);
+
+  // Initialize teams
+  const teams = [];
+  for (let i = 0; i < numTeams; i++) {
+    teams.push([]);
+  }
+
+  // Distribute employees into teams
+  for (let i = 0; i < filteredEmployees.length; i++) {
+    teams[i % numTeams].push(filteredEmployees[i]);
+  }
+
+  return teams;
+}
+
+// Define team size
+const teamSize = 4;
+
+// Generate teams
+const teams = generateTeams(employees, criteria, teamSize);
+
+// Output the teams
+console.log(teams);
+
 function createTeams(employees, numTeams) {
   // Group employees by location, gender, and role
   const groupedEmployees = {};
