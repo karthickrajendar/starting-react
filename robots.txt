@@ -9,6 +9,71 @@ const employees = [
   // Add more employee data here
 ];
 
+// Define team criteria (locations, genders, and roles should be arrays)
+const teamCriteria = {
+  location: ["Location A", "Location B"], // All locations
+  gender: ["Male", "Female"], // All genders
+  role: ["Developer", "Designer"], // All roles
+};
+
+// Shuffle function (Fisher-Yates shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Function to generate teams
+function generateTeams(employees, teamCriteria, teamSize) {
+  // Shuffle the employees
+  shuffleArray(employees);
+
+  // Calculate the number of teams needed
+  const numTeams = Math.ceil(employees.length / teamSize);
+
+  // Initialize teams
+  const teams = [];
+  for (let i = 0; i < numTeams; i++) {
+    teams.push([]);
+  }
+
+  // Distribute employees into teams while ensuring criteria match
+  for (const employee of employees) {
+    for (let i = 0; i < teams.length; i++) {
+      // Check if the team meets the criteria for this employee
+      const teamMeetsCriteria =
+        teamCriteria.location.includes(employee.location) &&
+        teamCriteria.gender.includes(employee.gender) &&
+        teamCriteria.role.includes(employee.role);
+
+      // If the team meets the criteria, add the employee to it
+      if (teamMeetsCriteria && teams[i].length < teamSize) {
+        teams[i].push(employee);
+        break; // Move to the next employee
+      }
+    }
+  }
+
+  return teams;
+}
+
+// Define team size
+const teamSize = 4;
+
+// Generate teams
+const teams = generateTeams(employees, teamCriteria, teamSize);
+
+// Output the teams
+console.log(teams);
+
+// Sample employee data in JSON format
+const employees = [
+  { name: "Employee 1", location: "Location A", gender: "Male", role: "Developer" },
+  { name: "Employee 2", location: "Location B", gender: "Female", role: "Designer" },
+  // Add more employee data here
+];
+
 // Define team criteria with arrays
 const criteria = {
   location: ["Location A", "Location B"],
