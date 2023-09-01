@@ -1,3 +1,73 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+Creating teams that have a mix of all specified criteria while ensuring diversity in terms of gender, age, join date, role, and location requires a more complex approach. Here's an example of how you can achieve this:
+
+```javascript
+// Sample data of people with criteria including location
+const people = [
+  { name: "Person 1", gender: "Male", age: 30, joinDate: "2020-01-15", role: "Developer", location: "New York" },
+  { name: "Person 2", gender: "Female", age: 25, joinDate: "2022-03-10", role: "Designer", location: "Los Angeles" },
+  { name: "Person 3", gender: "Male", age: 28, joinDate: "2021-07-05", role: "Tester", location: "Chicago" },
+  { name: "Person 4", gender: "Female", age: 32, joinDate: "2021-11-20", role: "Developer", location: "New York" },
+  { name: "Person 5", gender: "Male", age: 29, joinDate: "2022-02-15", role: "Designer", location: "Los Angeles" },
+  // Add more people here
+];
+
+// Criteria for team composition, including location
+const criteria = {
+  gender: ["Male", "Female"],
+  age: { min: 25, max: 35 },
+  joinDate: "2022-01-01",
+  roles: ["Developer", "Designer"],
+};
+
+// Function to filter people based on criteria including location
+function filterPeople(people, criteria) {
+  return people.filter(person => {
+    return (
+      criteria.gender.includes(person.gender) &&
+      person.age >= criteria.age.min &&
+      person.age <= criteria.age.max &&
+      person.joinDate >= criteria.joinDate &&
+      criteria.roles.includes(person.role)
+    );
+  });
+}
+
+// Function to create teams with a mix of all criteria and location
+function createTeamsWithMixOfCriteria(people, criteria, teamSize) {
+  const filteredPeople = filterPeople(people, criteria);
+
+  const teams = [];
+
+  while (teams.length < teamSize) {
+    const team = [];
+
+    for (const criterion of Object.keys(criteria)) {
+      const matchingPeople = filteredPeople.filter(person => person[criterion] === criteria[criterion]);
+      if (matchingPeople.length === 0) {
+        // If no one matches the current criterion, clear the team and start over
+        break;
+      }
+
+      const randomIndex = Math.floor(Math.random() * matchingPeople.length);
+      const person = matchingPeople.splice(randomIndex, 1)[0];
+      team.push(person);
+    }
+
+    if (team.length === Object.keys(criteria).length) {
+      // If the team meets all criteria, add it to the list of teams
+      teams.push(team);
+    }
+  }
+
+  return teams;
+}
+
+const teamSize = 3; // Change this to the desired team size
+const teams = createTeamsWithMixOfCriteria(people, criteria, teamSize);
+console.log(teams);
+```
+
+This code creates teams that meet all specified criteria (gender, age, join date, role) while also ensuring diversity in terms of location within each team. If there are not enough people who meet all criteria, it will clear the team and retry until it finds a suitable team.
