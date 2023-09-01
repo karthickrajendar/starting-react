@@ -18,6 +18,76 @@ const criteria = {
 };
 
 // Function to generate diversified teams
+function generateDiversifiedTeams(employees, criteria, numTeams) {
+  const teams = [];
+  const availableEmployees = [...employees]; // Copy of employees array for manipulation
+
+  // Helper function to check if criteria are met
+  function meetsCriteria(employee, team) {
+    return (
+      criteria.locations.includes(employee.location) &&
+      criteria.genders.includes(employee.gender) &&
+      employee.experience >= criteria.minSeniority &&
+      criteria.roles.includes(employee.role)
+    );
+  }
+
+  // Helper function to remove an employee from the available pool
+  function removeEmployeeFromPool(employee) {
+    const index = availableEmployees.findIndex(e => e === employee);
+    if (index !== -1) {
+      availableEmployees.splice(index, 1);
+    }
+  }
+
+  for (let i = 0; i < numTeams; i++) {
+    const team = {
+      location: criteria.locations[i % criteria.locations.length],
+      gender: criteria.genders[i % criteria.genders.length],
+      role: criteria.roles[i % criteria.roles.length],
+      senior: [],
+      junior: [],
+    };
+
+    availableEmployees.forEach(employee => {
+      if (meetsCriteria(employee, team)) {
+        team.senior.length <= team.junior.length
+          ? team.senior.push(employee)
+          : team.junior.push(employee);
+
+        removeEmployeeFromPool(employee);
+      }
+    });
+
+    teams.push(team);
+  }
+
+  return teams;
+}
+
+const numTeams = 3; // Specify the number of teams
+const diversifiedTeams = generateDiversifiedTeams(employees, criteria, numTeams);
+
+console.log('Diversified Teams:', diversifiedTeams);
+
+
+// Sample employee data (you would have your own data)
+const employees = [
+  { name: 'Employee 1', location: 'Location A', gender: 'Male', experience: 5, role: 'Developer' },
+  { name: 'Employee 2', location: 'Location B', gender: 'Female', experience: 3, role: 'Designer' },
+  { name: 'Employee 3', location: 'Location A', gender: 'Female', experience: 2, role: 'Developer' },
+  // Add more employees here
+];
+
+// Criteria for team formation
+const criteria = {
+  locations: ['Location A', 'Location B'], // List of required locations
+  genders: ['Male', 'Female'], // List of required genders
+  minSeniority: 3, // Minimum experience level for seniority
+  roles: ['Developer', 'Designer'], // List of required roles
+};
+
+// Function to generate diversified teams
 function generateDiversifiedTeams(employees, criteria) {
   const teams = [];
   const availableEmployees = [...employees]; // Copy of employees array for manipulation
