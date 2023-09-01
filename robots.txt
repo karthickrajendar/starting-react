@@ -2,6 +2,74 @@
 User-agent: *
 Disallow:
 
+// Sample employee data (you would typically load this from a database or file)
+const employees = [
+    { id: 1, name: "Alice", location: "New York", role: "Developer", gender: "Female" },
+    { id: 2, name: "Bob", location: "Los Angeles", role: "Designer", gender: "Male" },
+    // Add more employee data here
+];
+
+// Function to create diverse teams
+function createDiverseTeams(employees) {
+    // Separate employees by location, role, and gender
+    const employeesByLocation = {};
+    const employeesByRole = {};
+    const employeesByGender = {};
+
+    employees.forEach((employee) => {
+        const { location, role, gender } = employee;
+
+        if (!employeesByLocation[location]) {
+            employeesByLocation[location] = [];
+        }
+        employeesByLocation[location].push(employee);
+
+        if (!employeesByRole[role]) {
+            employeesByRole[role] = [];
+        }
+        employeesByRole[role].push(employee);
+
+        if (!employeesByGender[gender]) {
+            employeesByGender[gender] = [];
+        }
+        employeesByGender[gender].push(employee);
+    });
+
+    // Create diverse teams based on location, role, and gender
+    const teams = [];
+
+    // You can adjust the team composition criteria as needed
+    const maxTeamSize = 4;
+    const minTeamSize = 2;
+
+    for (const location in employeesByLocation) {
+        for (const role in employeesByRole) {
+            for (const gender in employeesByGender) {
+                const team = [];
+                const eligibleEmployees = employeesByLocation[location]
+                    .filter(employee => employeesByRole[role].includes(employee))
+                    .filter(employee => employeesByGender[gender].includes(employee));
+
+                while (team.length < maxTeamSize && eligibleEmployees.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * eligibleEmployees.length);
+                    const selectedEmployee = eligibleEmployees.splice(randomIndex, 1)[0];
+                    team.push(selectedEmployee);
+                }
+
+                if (team.length >= minTeamSize) {
+                    teams.push(team);
+                }
+            }
+        }
+    }
+
+    return teams;
+}
+
+// Example usage:
+const diverseTeams = createDiverseTeams(employees);
+console.log(diverseTeams);
+
 // Sample employee data (you would have your own data)
 const employees = [
   { name: 'Employee 1', location: 'Location A', gender: 'Male', experience: 5, role: 'Developer' },
