@@ -1,7 +1,52 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+function createTeams(employees, numTeams) {
+  // Group employees by location, gender, and role
+  const groupedEmployees = {};
+  employees.forEach(employee => {
+    const key = `${employee.location}-${employee.gender}-${employee.role}`;
+    if (!groupedEmployees[key]) {
+      groupedEmployees[key] = [];
+    }
+    groupedEmployees[key].push(employee);
+  });
 
+  // Calculate target team size
+  const totalEmployees = employees.length;
+  const targetTeamSize = Math.ceil(totalEmployees / numTeams);
+
+  // Create teams
+  const teams = [];
+  let currentTeam = [];
+  for (const key in groupedEmployees) {
+    const group = groupedEmployees[key];
+    while (group.length > 0) {
+      if (currentTeam.length < targetTeamSize) {
+        currentTeam.push(group.pop());
+      } else {
+        teams.push(currentTeam);
+        currentTeam = [];
+      }
+    }
+  }
+
+  // Distribute any remaining employees
+  teams.push(...currentTeam);
+
+  return teams;
+}
+
+// Example usage:
+const employees = [
+  { location: 'A', gender: 'Male', role: 'Developer' },
+  { location: 'A', gender: 'Female', role: 'Designer' },
+  // Add more employee data here...
+];
+
+const numTeams = 3;
+const teams = createTeams(employees, numTeams);
+console.log(teams);
 // Function to create teams based on criteria
 function createTeamsWithAllCriteria(employeeData, numTeams, criteria) {
   // Group employees by criteria (e.g., location, gender, role)
