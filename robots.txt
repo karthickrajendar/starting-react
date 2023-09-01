@@ -1,7 +1,230 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-
+[
+    {
+        "name": "John Smith",
+        "gender": "Male",
+        "age": 32,
+        "joinDate": "2019-05-15",
+        "role": "Engineer",
+        "location": "New York"
+    },
+    {
+        "name": "Alice Johnson",
+        "gender": "Female",
+        "age": 28,
+        "joinDate": "2020-02-20",
+        "role": "Manager",
+        "location": "San Francisco"
+    },
+    {
+        "name": "David Brown",
+        "gender": "Male",
+        "age": 35,
+        "joinDate": "2018-09-10",
+        "role": "Designer",
+        "location": "Los Angeles"
+    },
+    {
+        "name": "Emily Davis",
+        "gender": "Female",
+        "age": 27,
+        "joinDate": "2021-11-05",
+        "role": "Engineer",
+        "location": "Chicago"
+    },
+    {
+        "name": "Michael Wilson",
+        "gender": "Male",
+        "age": 29,
+        "joinDate": "2022-03-10",
+        "role": "Manager",
+        "location": "Boston"
+    },
+    {
+        "name": "Sophia Anderson",
+        "gender": "Female",
+        "age": 30,
+        "joinDate": "2020-08-15",
+        "role": "Designer",
+        "location": "Seattle"
+    },
+    {
+        "name": "William Lee",
+        "gender": "Male",
+        "age": 33,
+        "joinDate": "2017-07-25",
+        "role": "Engineer",
+        "location": "Denver"
+    },
+    {
+        "name": "Olivia White",
+        "gender": "Female",
+        "age": 31,
+        "joinDate": "2016-04-12",
+        "role": "Manager",
+        "location": "Miami"
+    },
+    {
+        "name": "Daniel Harris",
+        "gender": "Male",
+        "age": 34,
+        "joinDate": "2015-09-30",
+        "role": "Designer",
+        "location": "Austin"
+    },
+    {
+        "name": "Ava Turner",
+        "gender": "Female",
+        "age": 26,
+        "joinDate": "2023-01-05",
+        "role": "Engineer",
+        "location": "San Diego"
+    },
+    {
+        "name": "Liam Martinez",
+        "gender": "Male",
+        "age": 31,
+        "joinDate": "2018-06-20",
+        "role": "Manager",
+        "location": "New York"
+    },
+    {
+        "name": "Mia Gonzalez",
+        "gender": "Female",
+        "age": 29,
+        "joinDate": "2020-03-18",
+        "role": "Designer",
+        "location": "San Francisco"
+    },
+    {
+        "name": "James Turner",
+        "gender": "Male",
+        "age": 36,
+        "joinDate": "2017-02-14",
+        "role": "Engineer",
+        "location": "Los Angeles"
+    },
+    {
+        "name": "Charlotte Scott",
+        "gender": "Female",
+        "age": 28,
+        "joinDate": "2019-09-30",
+        "role": "Manager",
+        "location": "Chicago"
+    },
+    {
+        "name": "Benjamin Hall",
+        "gender": "Male",
+        "age": 33,
+        "joinDate": "2022-01-10",
+        "role": "Designer",
+        "location": "Boston"
+    },
+    {
+        "name": "Amelia Adams",
+        "gender": "Female",
+        "age": 30,
+        "joinDate": "2018-11-25",
+        "role": "Engineer",
+        "location": "Seattle"
+    },
+    {
+        "name": "Lucas Parker",
+        "gender": "Male",
+        "age": 35,
+        "joinDate": "2016-08-10",
+        "role": "Manager",
+        "location": "Denver"
+    },
+    {
+        "name": "Grace Rodriguez",
+        "gender": "Female",
+        "age": 27,
+        "joinDate": "2021-04-05",
+        "role": "Designer",
+        "location": "Miami"
+    },
+    {
+        "name": "Jackson Wright",
+        "gender": "Male",
+        "age": 32,
+        "joinDate": "2019-03-15",
+        "role": "Engineer",
+        "location": "Austin"
+    },
+    {
+        "name": "Lily Moore",
+        "gender": "Female",
+        "age": 31,
+        "joinDate": "2017-12-05",
+        "role": "Manager",
+        "location": "San Diego"
+    },
+    {
+        "name": "Logan Hill",
+        "gender": "Male",
+        "age": 29,
+        "joinDate": "2020-10-20",
+        "role": "Designer",
+        "location": "New York"
+    },
+    {
+        "name": "Chloe Lewis",
+        "gender": "Female",
+        "age": 28,
+        "joinDate": "2021-07-18",
+        "role": "Engineer",
+        "location": "San Francisco"
+    },
+    {
+        "name": "Samuel Young",
+        "gender": "Male",
+        "age": 34,
+        "joinDate": "2016-06-12",
+        "role": "Manager",
+        "location": "Los Angeles"
+    },
+    {
+        "name": "Zoe Turner",
+        "gender": "Female",
+        "age": 30,
+        "joinDate": "2020-04-30",
+        "role": "Designer",
+        "location": "Chicago"
+    },
+    {
+        "name": "Henry Harris",
+        "gender": "Male",
+        "age": 33,
+        "joinDate": "2017-05-10",
+        "role": "Engineer",
+        "location": "Boston"
+    },
+    {
+        "name": "Ella Clark",
+        "gender": "Female",
+        "age": 28,
+        "joinDate": "2019-08-15",
+        "role": "Manager",
+        "location": "Seattle"
+    },
+    {
+        "name": "William Turner",
+        "gender": "Male",
+        "age": 29,
+        "joinDate": "2022-02-25",
+        "role": "Designer",
+        "location": "Denver"
+    },
+    {
+        "name": "Avery King",
+        "gender": "Female",
+        "age": 31,
+        "joinDate": "2018-03-20",
+        "role": "Engineer",
+        "location": "Miami
 // Sample employee data
 const employees = [
     { name: "Employee 1", gender: "Male", age: 30, joinDate: "2020-01-15", role: "Engineer", location: "New York" },
