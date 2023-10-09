@@ -1,3 +1,61 @@
+// MyAgGridComponent.js
+import React, { useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import CustomHeaderCheckbox from './CustomHeaderCheckbox';
+
+const MyAgGridComponent = () => {
+  const [rowData, setRowData] = useState([...]); // Your row data
+  const [selectedRows, setSelectedRows] = useState([]);
+
+  const columnDefs = [
+    {
+      headerCheckboxSelection: true,
+      checkboxSelection: true,
+      headerComponentFramework: CustomHeaderCheckbox,
+      headerComponentParams: {
+        onSelectionChange: handleHeaderSelectionChange,
+        selected: selectedRows.length === rowData.length,
+      },
+    },
+    // Other column definitions
+  ];
+
+  const handleHeaderSelectionChange = (isChecked) => {
+    if (isChecked) {
+      setSelectedRows(rowData.map((row) => row.id));
+    } else {
+      setSelectedRows([]);
+    }
+  };
+
+  const handleRowSelectionChange = (event) => {
+    if (event.node.isSelected()) {
+      setSelectedRows([...selectedRows, event.data.id]);
+    } else {
+      setSelectedRows(selectedRows.filter((id) => id !== event.data.id));
+    }
+  };
+
+  const gridOptions = {
+    onSelectionChanged: handleRowSelectionChange,
+  };
+
+  return (
+    <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+      <AgGridReact
+        columnDefs={columnDefs}
+        rowData={rowData}
+        rowSelection="multiple"
+        gridOptions={gridOptions}
+      />
+    </div>
+  );
+};
+
+export default MyAgGridComponent;
+
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
