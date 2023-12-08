@@ -1,3 +1,15 @@
+function snakeToCamel(str) {
+  return str.replace(/_([a-z])/g, function(match, group) {
+    return group.toUpperCase();
+  });
+}
+
+// Example usage:
+const snakeCaseString = "snake_case_example";
+const camelCaseString = snakeToCamel(snakeCaseString);
+console.log(camelCaseString);
+
+
 Modularity and Reusability: Npm packages allow you to divide your code into smaller, reusable modules, making it easier to maintain, update, and share across different projects.
 
 Dependency Management: By using npm packages, you can easily manage dependencies and ensure that your code relies on well-tested and maintained libraries, reducing the risk of bugs and security vulnerabilities.
