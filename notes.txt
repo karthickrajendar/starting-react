@@ -1,4 +1,15 @@
 function snakeToCamel(str) {
+  return str.toLowerCase().replace(/_([a-z])/g, function(match, group) {
+    return group.toUpperCase();
+  });
+}
+
+// Example usage:
+const snakeCaseString = "SNAKE_CASE_EXAMPLE";
+const camelCaseString = snakeToCamel(snakeCaseString);
+console.log(camelCaseString);
+
+function snakeToCamel(str) {
   return str.replace(/_([a-z])/g, function(match, group) {
     return group.toUpperCase();
   });
