@@ -42,35 +42,7 @@ const snakeCaseString = "snake_case_example";
 const camelCaseString = snakeToCamel(snakeCaseString);
 console.log(camelCaseString);
 
-Hello everyone, good morning!
-Introduction
-Today I would like to present and nominate Anupama Athreyas for VP promotion. Anupama has been with the firm for last 5+ years. Anupama took an IJP opportunity to join SSCRP Team from last year June and back then she was part of CSW team. Currently she is playing UI lead role in  MR2.0 application from last 8+ months after taking the IJP opportunity to SSCRP team. In CSW, Anupama was part of CSW Studio & CSW2 Core team and driving UI initiatives & deliverable along with the team.  She has been consistent in working proactively and closely with stakeholders, architects and collaborating well with different teams.
-Deliverables
-I would like to go through the some of the key deliverables where Anupama collaborated very well with stakeholders & various teams and made huge impacts which helped the team to achieve better business results.
-	New TACTS Client Onboarding: In CSW space, there was one critical requirement to onboard a new business to core CSW Studio and CSW2.0 application. At that time CSW Studio was supporting only IDP as a data source for designing and configuring views. To support and onboard the new business, CSW Studio application should adopt to a Oracle data source. Anupma took the ownership and responsibility and drive this effort along with team and made core framework changes in maximum efforts needed to complete in short span of time. With this deliverable, Anupama demonstrated the ability to take ownership and driving things very well to achieve better business results by focusing on the client and stakeholder requirements.
-	CSW User Statistics: Anupama drove this initiative and worked with team to log application metrics across CSW applications. She collaborated with UI Logger library team efficiently. It helps the team to better understand the features widely used by CSW user and to focus on those. 
-	There are some of other notable deliverables in CSW such as Dataset mapping utility, Generic & Dynamic hard filters integration which helped CSW users to do their day-to-day activities seamlessly and conveniently. Anupama skills on UI technologies and the thought process on making generic and reusable components, utilities which improved the developer experience and increased the productivity of team.
-And with current role in SSCRP team, she has been working proactively and closely with stakeholders and other technology teams for the current and upcoming programs such as Unified client reporting, new self-service onboarding tool, implementing UI & Web app standards, leading the efforts on building generic components, mentoring new team members for reporting platform applications. She is also guiding and mentoring UI engineers in other teams. 
-In Client Reporting space, Anupama contributed and guided the team to implement the key feature called UDF (User Defined Filters) which is used by MR2.0 users and made their life easier to generate reports by applying dynamic filters. Anupama came up with generic advanced filter component in short time and implemented the solution along with the team by understanding and focusing user needs.  
 
-Teamwork & Innovation:
-Anupama is an excellent team player and often displays a cooperative and collaborative nature within team. She always proactively shares innovative ideas/solutions with the team. 
-UI Toolkit Studio: Anupama came up with an excellent idea (UI Toolkit Studio) for Thunderstorm. It’ The tool can be used to build user interfaces and generate React code by just drag and drop of the JPM UI toolkit components. Anupama was leading this initiative efficiently with the team. As part of Shark tank, presented an innovation idea of creating a Figma plugin to generate react code for Toolkit and upcoming SALT design system.
-Self-service Report Onboarding Application: In Client Reporting Platform space, there is a need to identify and remove the manual process for onboarding new and updating existing report templates. This process is currently taking minimum of 6-8 weeks for new reports and collaboration needed between multiple teams and has to with SDLC process to finally onboard/update reports. Anupama and team came up with an idea of building the self-service application which can be used by prod-dev’s and BA’s without any involvement and SDLC process needed from technology team. Anupama quickly involves in POC with team and did a demo to stakeholders. They are much impressed with the idea and got funding for next 2 years. Anupama is driving these efforts with dedicated team and it’s in progress.
-Over & Above Programs & Contributions:
-Anupama has been actively participating in tech center and SST programs for the last few years. 
--	Thunderstorm [UI Toolkit Studio]
--	Catalyst
--	TIF [Core Member]
--	Cortado
--	Happify
--	Shakti & POM Initiatives
--	Wings to Careers
--	LEAP & Women Leadership Program
--	FFG [2 consecutive years]
-Platform
--	Self Service Report Onboarding Application
--	MR UI Lead
 
 
 
