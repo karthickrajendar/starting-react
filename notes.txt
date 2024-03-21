@@ -1,3 +1,19 @@
+ const [activeNode, setActiveNode] = useState(null);
+  const [expandedNodes, setExpandedNodes] = useState([]);
+
+  const handleNodeClick = nodeId => {
+    setActiveNode(nodeId);
+  };
+
+  const handleToggle = nodeId => {
+    if (expandedNodes.includes(nodeId)) {
+      setExpandedNodes(expandedNodes.filter(id => id !== nodeId));
+    } else {
+      setExpandedNodes([...expandedNodes, nodeId]);
+    }
+  };
+
+
 function snakeToCamelCaseObject(obj) {
   const result = {};
   for (const key in obj) {
